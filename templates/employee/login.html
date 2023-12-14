@@ -1,0 +1,134 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lobster+Two&family=Raleway:wght@100&family=Ubuntu:wght@300&display=swap"
+        rel="stylesheet">
+    <title>Login</title>
+    <style>
+        body {
+            background-color: whitesmoke;
+            box-sizing: border-box;
+            margin: 0;
+            font-family: 'Lobster Two', cursive;
+            font-family: 'Raleway', sans-serif;
+            font-family: 'Ubuntu', sans-serif;
+            color: black;
+        }
+
+        .login {
+            box-shadow: -2px 5px 30px 0.5px rgb(168, 168, 168);
+            border-radius: 5%;
+            width: 50%;
+            margin: 9% auto;
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+            border: none;
+        }
+
+        .imgs {
+            flex: 1;
+            background-color: white;
+        }
+
+        .login-form {
+            flex: 1;
+            padding: 15vh 2vw;
+            background-color: white;
+            border: none;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        tr {
+            line-height: 3vh;
+        }
+
+        input[type=text],
+        input[type=password] {
+            width: 100%;
+            box-sizing: border-box;
+            border: none;
+            border-bottom: 0.5px solid black;
+        }
+
+        input[type=submit] {
+            margin-top: 5vh;
+            padding: 1vh 2vh;
+            background-color: rgb(52, 152, 219);
+            border: none;
+            color: white;
+            border-radius: 0.5vh;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        a {
+            text-decoration: none;
+            font-size: small;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+
+        .err_message {
+            color: red;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .login {
+                flex-direction: column;
+                width: 80%;
+            }
+
+            .login-form {
+                padding: 10vh 2vw;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login">
+        <div class="imgs"><img src="https://i.postimg.cc/mg8P1RRt/Team.png"></div>
+        <div class="login-form">
+            LOGIN
+            <form action="" method="post">
+                {% csrf_token %}
+                <table>
+                    <tr>
+                        <td>Username</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="id" required></td><br>
+                    </tr>
+                    <tr class="pass">
+                        <td><br>Password</td>
+                    </tr>
+                    <tr>
+                        <td><input type="password" name="password" required></td><br>
+                    </tr>
+                </table>
+                <input type="submit" value="Login"><br><br>
+                <div class="err_message">
+                    {% for msg in messages %}
+                        {{ msg }}        
+                    {% endfor %}
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
